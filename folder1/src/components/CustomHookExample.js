@@ -1,11 +1,13 @@
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(key, JSON.stringify(storedValue));
-    } catch (error) {
-      console.error(error);
-    }
-  }, [key, storedValue]);
+const useFormInput = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
 
-  return [storedValue, setStoredValue];
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  return {
+    value,
+    onChange: handleChange,
+  };
 };
 
