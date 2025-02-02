@@ -1,13 +1,24 @@
-const useFormInput = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        setData(json);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
 
-  return {
-    value,
-    onChange: handleChange,
-  };
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
 };
 
