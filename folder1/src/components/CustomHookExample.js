@@ -1,10 +1,11 @@
-  const [storedValue, setStoredValue] = useState(() => {
+  useEffect(() => {
     try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      window.localStorage.setItem(key, JSON.stringify(storedValue));
     } catch (error) {
       console.error(error);
-      return initialValue;
     }
-  });
+  }, [key, storedValue]);
+
+  return [storedValue, setStoredValue];
+};
 
