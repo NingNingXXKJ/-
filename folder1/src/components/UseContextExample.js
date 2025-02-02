@@ -1,2 +1,2 @@
-const ThemeContext = createContext();
+const UserContext = createContext();
 
