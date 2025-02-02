@@ -1,11 +1,16 @@
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState({
+    name: 'John Doe',
+    preferences: {
+      language: 'English',
+      notifications: true
+    }
+  });
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
-    </ThemeContext.Provider>
+    </UserContext.Provider>
   );
 };
 
