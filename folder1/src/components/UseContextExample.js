@@ -1,22 +1,25 @@
-  const toggleNotifications = () => {
-    setUser(prevUser => ({
-      ...prevUser,
-      preferences: {
-        ...prevUser.preferences,
-        notifications: !prevUser.preferences.notifications
-      }
-    }));
-  };
-
+const UseContextExample = () => {
   return (
-    <div>
-      <h3>User Profile</h3>
-      <p>Name: {user.name}</p>
-      <p>Language: {user.preferences.language}</p>
-      <p>Notifications: {user.preferences.notifications ? 'Enabled' : 'Disabled'}</p>
-      <button className="button" onClick={toggleNotifications}>
-        Toggle Notifications
-      </button>
+    <div className="example-container">
+      <h2>useContext Hook Examples</h2>
+      
+      <ThemeProvider>
+        <UserProvider>
+          <div>
+            <h3>Theme Example</h3>
+            <ThemedButton />
+          </div>
+
+          <div style={{ marginTop: '20px' }}>
+            <UserProfile />
+          </div>
+
+          <div style={{ marginTop: '20px' }}>
+            <h3>Accessing Multiple Contexts</h3>
+            <ContextConsumer />
+          </div>
+        </UserProvider>
+      </ThemeProvider>
     </div>
   );
 };
