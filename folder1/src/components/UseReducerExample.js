@@ -1,3 +1,8 @@
-  const [state, dispatch] = useReducer(todoReducer, initialState);
-  const [newTodo, setNewTodo] = useState('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newTodo.trim()) {
+      dispatch({ type: ACTIONS.ADD_TODO, payload: newTodo });
+      setNewTodo('');
+    }
+  };
 
