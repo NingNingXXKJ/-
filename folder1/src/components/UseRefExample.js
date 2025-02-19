@@ -1,8 +1,4 @@
-  useEffect(() => {
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, []);
+  const focusInput = () => {
+    inputRef.current.focus();
+  };
 
